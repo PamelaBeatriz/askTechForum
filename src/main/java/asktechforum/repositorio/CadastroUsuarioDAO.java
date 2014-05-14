@@ -62,7 +62,7 @@ public class CadastroUsuarioDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if(rs.next()) {
-				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
 				usuario.setEmail(rs.getString("email"));
 			}
@@ -83,7 +83,7 @@ public class CadastroUsuarioDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if(rs.next()) {
-				usuario.setId(rs.getInt("idUsuario"));
+				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
 				usuario.setEmail(rs.getString("email"));
 			}
@@ -102,7 +102,7 @@ public class CadastroUsuarioDAO {
             ResultSet rs = statement.executeQuery("select * from usuario");
             while (rs.next()) {
             	Usuario usuario = new Usuario();
-            	usuario.setId(rs.getInt("idUsuario"));
+            	usuario.setIdUsuario(rs.getInt("idUsuario"));
             	usuario.setNome(rs.getString("nome"));
             	usuario.setEmail(rs.getString("email"));
             	usuarios.add(usuario);

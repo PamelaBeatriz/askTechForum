@@ -40,12 +40,9 @@
 					<c:forEach items="${usuarios}" var="users">
 						<tr>
 							<td><input type="radio" name="usuario" id="usuario" /></td>
-							<td><c:out value="${users.id}" /></td>
-							<%-- <label for="usuario">${usuario.id}</label></td> --%>
+							<td><c:out value="${users.idUsuario}" /></td>
 							<td><c:out value="${users.nome}" /></td>
-							<%-- <label for="usuario">${usuario.nome}</label></td> --%>
 							<td><c:out value="${users.email}" /></td>
-							<%-- <label for="usuario">${usuario.email}</label></td> --%>
 						</tr>
 					</c:forEach>
 				</tbody>

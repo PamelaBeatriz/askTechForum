@@ -7,5 +7,5 @@ public class CadastroUsuarioBC {
 	//validacao (regex) de email
 	//senhas iguais
 	//senha com no maximo 4 caracteres
-	//usuario ja cadastrado com mesmo email (login)
+	//usuario ja cadastrado com mesmo email
 }

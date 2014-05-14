@@ -14,7 +14,7 @@ public class ConnectionUtil {
         else {
             try {
                 String driver = "com.mysql.jdbc.Driver";
-                String url = "jdbc:mysql://localhost:3306/asktech";
+                String url = "jdbc:mysql://localhost:3306/asktechforum";
                 String user = "root";
                 String password = "root";
                 Class.forName(driver);

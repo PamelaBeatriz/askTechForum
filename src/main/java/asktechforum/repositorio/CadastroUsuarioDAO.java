@@ -26,10 +26,10 @@ public class CadastroUsuarioDAO {
 	public void adicionarUsuario(Usuario usuario){
 		try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into usuario(nome,login,senha) values ( ?, ?, ? )");
+                    .prepareStatement("insert into usuario(nome,email,senha) values ( ?, ?, ? )");
            
             preparedStatement.setString(1, usuario.getNome());
-            preparedStatement.setString(2, usuario.getLogin());
+            preparedStatement.setString(2, usuario.getEmail());
             preparedStatement.setString(3, usuario.getSenha());
             
             preparedStatement.executeUpdate();
@@ -43,7 +43,7 @@ public class CadastroUsuarioDAO {
 	public void deletarUsuario(String email) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("delete from usuario where login=?");
+                    .prepareStatement("delete from usuario where email=?");
             
             preparedStatement.setString(1, email);
             preparedStatement.executeUpdate();
@@ -57,14 +57,14 @@ public class CadastroUsuarioDAO {
 		Usuario usuario = new Usuario();
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("select * from usuario where login=?");
+					.prepareStatement("select * from usuario where email=?");
 			preparedStatement.setString(1, email);
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if(rs.next()) {
-				usuario.setId(rs.getInt("id"));
+				usuario.setId(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setLogin(rs.getString("login"));
+				usuario.setEmail(rs.getString("email"));
 			}
 			
 		} catch (SQLException e) {
@@ -83,9 +83,9 @@ public class CadastroUsuarioDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if(rs.next()) {
-				usuario.setId(rs.getInt("id"));
+				usuario.setId(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setLogin(rs.getString("login"));
+				usuario.setEmail(rs.getString("email"));
 			}
 			
 		} catch (SQLException e) {
@@ -102,9 +102,9 @@ public class CadastroUsuarioDAO {
             ResultSet rs = statement.executeQuery("select * from usuario");
             while (rs.next()) {
             	Usuario usuario = new Usuario();
-            	usuario.setId(rs.getInt("id"));
+            	usuario.setId(rs.getInt("idUsuario"));
             	usuario.setNome(rs.getString("nome"));
-            	usuario.setLogin(rs.getString("login"));
+            	usuario.setEmail(rs.getString("email"));
             	usuarios.add(usuario);
             }
         } catch (SQLException e) {

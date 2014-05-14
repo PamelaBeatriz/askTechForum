@@ -3,7 +3,7 @@ package asktechforum.dominio;
 public class Usuario {
 	private int id;
 	private String nome;
-	private String login;
+	private String email;
 	private String senha;
 	private String confSenha;
 	
@@ -23,11 +23,11 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getLogin() {
-		return login;
+	public String getEmail() {
+		return email;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getSenha() {
 		return senha;

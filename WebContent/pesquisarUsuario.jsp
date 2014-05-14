@@ -16,7 +16,7 @@
 		<br/><br/>
 		
 		<input type="radio" name="pesquisaRadio" id="email" value="emailRadio" />
-		<label for="email"> E-mail: </label><input value="${usuario.login}" type="text" name="email" id="email" />
+		<label for="email"> E-mail: </label><input value="${usuario.email}" type="text" name="email" id="email" />
 		<br><br/>
 	
 		<input type="radio" name="pesquisaRadio" id="listarTodos" value="listartodosRadio" />
@@ -24,7 +24,7 @@
 		<br/><br/>
 		
 		<input value="Pesquisar" type="submit" />
-		<br/><br/><br/>
+		<br/><br/>
 
 		<c:if test="${not empty usuarios}">
 			<table id="tabelaListaUsuarios" border="1">
@@ -33,7 +33,7 @@
 						<td></td>
 						<td>Id</td>
 						<td>Nome</td>
-						<td>Login</td>
+						<td>Email</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,14 +44,14 @@
 							<%-- <label for="usuario">${usuario.id}</label></td> --%>
 							<td><c:out value="${users.nome}" /></td>
 							<%-- <label for="usuario">${usuario.nome}</label></td> --%>
-							<td><c:out value="${users.login}" /></td>
-							<%-- <label for="usuario">${usuario.login}</label></td> --%>
+							<td><c:out value="${users.email}" /></td>
+							<%-- <label for="usuario">${usuario.email}</label></td> --%>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</c:if>
-		<input value="Alterar" type="button" /> <input value="Excluir" type="button" />
+		<input value="Exibir" type="button" />
 		<br/><br/><br/>
 
 		<script type="text/javascript">

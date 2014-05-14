@@ -1,6 +1,5 @@
 package asktechforum.repositorio;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +11,6 @@ import java.util.List;
 import asktechforum.util.ConnectionUtil;
 import asktechforum.dominio.Usuario;
 
-
 public class CadastroUsuarioDAO {
 
 	private Connection connection;
@@ -21,16 +19,16 @@ public class CadastroUsuarioDAO {
 		connection = ConnectionUtil.getConnection();
 	}
 	
-	
-	
 	public void adicionarUsuario(Usuario usuario){
 		try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into usuario(nome,email,senha) values ( ?, ?, ? )");
-           
+                    .prepareStatement("insert into usuario(nome,dt_nasc,email,localizacao,senha) values ( ?, ?, ?, ?, ? )");
+            
             preparedStatement.setString(1, usuario.getNome());
-            preparedStatement.setString(2, usuario.getEmail());
-            preparedStatement.setString(3, usuario.getSenha());
+            preparedStatement.setString(2, usuario.getDataNascimento());
+            preparedStatement.setString(3, usuario.getEmail());
+            preparedStatement.setString(4, usuario.getLocalizacao());
+            preparedStatement.setString(5, usuario.getSenha());
             
             preparedStatement.executeUpdate();
 
@@ -38,7 +36,6 @@ public class CadastroUsuarioDAO {
             e.printStackTrace();
         }
     }
-	
 	
 	public void deletarUsuario(String email) {
         try {
@@ -64,7 +61,9 @@ public class CadastroUsuarioDAO {
 			if(rs.next()) {
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
+				usuario.setDataNascimento(rs.getString("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
+				usuario.setLocalizacao(rs.getString("localizacao"));
 			}
 			
 		} catch (SQLException e) {
@@ -85,7 +84,9 @@ public class CadastroUsuarioDAO {
 			if(rs.next()) {
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
+				usuario.setDataNascimento(rs.getString("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
+				usuario.setLocalizacao(rs.getString("localizacao"));
 			}
 			
 		} catch (SQLException e) {
@@ -102,9 +103,11 @@ public class CadastroUsuarioDAO {
             ResultSet rs = statement.executeQuery("select * from usuario");
             while (rs.next()) {
             	Usuario usuario = new Usuario();
-            	usuario.setIdUsuario(rs.getInt("idUsuario"));
-            	usuario.setNome(rs.getString("nome"));
-            	usuario.setEmail(rs.getString("email"));
+				usuario.setIdUsuario(rs.getInt("idUsuario"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setDataNascimento(rs.getString("dt_nasc"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setLocalizacao(rs.getString("localizacao"));
             	usuarios.add(usuario);
             }
         } catch (SQLException e) {
@@ -113,5 +116,4 @@ public class CadastroUsuarioDAO {
 
         return usuarios;
     }
-	
 }

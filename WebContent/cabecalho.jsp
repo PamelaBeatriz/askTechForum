@@ -17,33 +17,29 @@
 
 <body>
   <div id="main">
-  
-<!--     <header> -->
+  	<div id="header">
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="cadastroUsuario.jsp">Ask Tech<span class="logo_colour">Forum</span></a></h1>
-          <h2><a href="login.jsp">Entre</a> <a href="cadastroUsuario.jsp">Cadastre-se</a></h2>
+          <h1><a href="index.jsp">Ask Tech<span class="logo_colour">Forum</span></a></h1>
+          <h2><a href="login.jsp">Entre</a>&nbsp; <a href="cadastroUsuario.jsp">Cadastre-se</a></h2>
         </div>
-        <form method="post" action="#" id="search">
-          <input class="search" type="text" name="search_field" value="search....." onclick="javascript: document.forms['search'].search_field.value=''" />
-          <input name="search" type="image" style="float: right;border: 0; margin: 20px 0 0 0;" src="images/search.png" alt="search" title="search" />
-        </form>
+        
+        <!-- Parte de pesquisa de pergunta. Será implementado na versão beta -->
+<!--         <form method="post" action="#" id="search"> -->
+<!--           <input class="search" type="text" name="search_field" value="search....." onclick="javascript: document.forms['search'].search_field.value=''" /> -->
+<!--           <input name="search" type="image" style="float: right;border: 0; margin: 20px 0 0 0;" src="images/search.png" alt="search" title="search" /> -->
+<!--         </form> -->
+
       </div>
-<!--       <nav> -->
+       
         <ul class="sf-menu" id="nav">
-          <li class="current"><a href="index.html">Perguntas</a></li>
-          <li><a href="usuarios.jsp">Usuários</a></li>
+         <li class="current"><a href="index.jsp">Perguntas</a></li>
+          <li><a href="pesquisarUsuario.jsp">Usuários</a></li>
           <li><a href="#">Tags</a>
             <ul>
               <li><a href="#">Java</a></li>
-              <li><a href="#">Android</a>
-                <ul>
-                  <li><a href="#">Exceções</a></li>
-                  <li><a href="#">Telas</a></li>
-                  <li><a href="#">Persistência</a></li>
-                </ul>
-              </li>
+              <li><a href="#">Android</a></li>
               <li><a href="#">Redes</a></li>
               <li><a href="#">JavaScript</a></li>
               <li><a href="#">SQL</a></li>
@@ -54,5 +50,4 @@
           <li><a href="sobre.jsp">Sobre</a></li>
             <li><a href="contact.php">Pergunte</a></li>
         </ul>
-<!--       </nav> -->
-<!--     </header> -->
+      </div>

@@ -128,7 +128,7 @@ ol li {
   margin-right: auto;
 }
 
-header { 
+#header { 
   background: #323534 url(../images/back.png) repeat-x;
   height: 153px;
 }
@@ -171,13 +171,16 @@ header {
 
 #logo_text h2 { 
   font-size: 125%;
-  padding: 0 0 0 0;
+  padding: 0 0 0 20px;
+  padding-left: 10px;
+  padding-right: 130px;
   color: #A8AA94;
 }
 
-nav { 
+#nav { 
   width: 1000px;
   height: 46px;
+  left: 135px;
 } 
 
 #site_content { 
@@ -231,9 +234,14 @@ nav {
   padding: 15px 15px;
 }
 
+.contentTitulo{
+	font:bold;
+	font-size: 12px;
+}
+
 .content { 
   text-align: left;
-  width: 740px;
+  width: 1000px; 
   margin: 0 0 15px 0;
   background: #fff;border-bottom: 1px solid #D4D4D4;
   border: 1px solid #e5e5e5;

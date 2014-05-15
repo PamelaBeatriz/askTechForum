@@ -1,6 +1,6 @@
   <footer>
-      <p><a href="index.html">Home</a> | <a href="examples.html">Examples</a> | <a href="page.html">A Page</a> | <a href="another_page.html">Another Page</a> | <a href="contact.php">Contact Us</a></p>
-      <p>Copyright &copy; Ask Tech Fórum | ©2014</p>
+      <p><a href="index.jsp">Perguntas</a> | <a href="pesquisarUsuario.jsp">Usuários</a> | <a href="page.html">Tags</a> | <a href="sobre.jsp">Sobre</a> | <a href="contact.php">Pergunte</a></p>
+      <p>Copyright &copy; Ask Tech Foum | 2014</p>
     </footer>
   </div>
   <!-- javascript at the bottom for fast page loading -->

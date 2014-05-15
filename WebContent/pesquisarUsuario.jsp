@@ -49,9 +49,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<input value="Exibir" type="button" />
-			<br/><br/><br/>
 		</c:if>
+		<input value="Exibir" type="button" />
+		<br/><br/><br/>
 
 	</fieldset>
 </form>

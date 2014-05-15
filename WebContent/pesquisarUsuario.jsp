@@ -11,21 +11,33 @@
 		<div class="content">
 			<h1>Pesquisar Usuários</h1>
 			<div class="content_item">
-				<br /> <input type="radio" name="pesquisaRadio" id="nome"
-					value="nomeRadio" checked="checked" /> <label for="nome">
-					Nome: </label><input value="${usuario.nome}" type="text" name="nome"
-					id="nome" /> <br />
-				<br /> <input type="radio" name="pesquisaRadio" id="email"
-					value="emailRadio" /> <label for="email"> E-mail: </label><input
-					value="${usuario.email}" type="text" name="email" id="email" /> <br>
-				<br /> <input type="radio" name="pesquisaRadio" id="listarTodos"
-					value="listartodosRadio" /> <label for="listarTodos">
-					Listar Todos</label> <br />
-				<br /> <input value="Pesquisar" type="submit" /> 
+			
+				<table border="0">
+					<td>
+						<input type="radio" name="pesquisaRadio" id="nome" value="nomeRadio" checked="checked" />
+						<br />
+						<br />
+						<input type="radio" name="pesquisaRadio" id="email" value="emailRadio" />
+						<br />
+						<br />
+						<input type="radio" name="pesquisaRadio" id="listarTodos" value="listartodosRadio" />
+					</td>
+					<td>
+						<label for="nome"> Nome: </label><input value="${usuario.nome}" type="text" name="nome" id="nome" />
+						<br />
+						<br /> 
+						<label for="email"> E-mail: </label><input value="${usuario.email}" type="text" name="email" id="email" />
+						<br/>
+						<br />
+						<label for="listarTodos">Listar Todos</label>
+					</td>
+				</table>	
+				
+				<input value="Pesquisar" type="submit" /> 
 				<br/><br/>
 
 				<c:if test="${not empty usuarios}">
-					<table id="tabelaListaUsuarios" border="1">
+					<table id="tabelaListaUsuarios" border="0">
 						<thead>
 							<tr class="tabelaPesquisa">
 								<td></td>

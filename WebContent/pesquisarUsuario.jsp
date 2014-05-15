@@ -22,6 +22,7 @@
 					value="listartodosRadio" /> <label for="listarTodos">
 					Listar Todos</label> <br />
 				<br /> <input value="Pesquisar" type="submit" /> 
+				<br/><br/>
 
 				<c:if test="${not empty usuarios}">
 					<table id="tabelaListaUsuarios" border="1">

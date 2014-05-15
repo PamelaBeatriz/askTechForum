@@ -31,6 +31,8 @@ DROP TABLE IF EXISTS `askTechForum`.`PERGUNTA` ;
 CREATE TABLE IF NOT EXISTS `askTechForum`.`PERGUNTA` (
   `idPergunta` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(150) NOT NULL,
+  `data` DATE NOT NULL,
+  `hora` HORA NOT NULL,
   `descricao` VARCHAR(1000) NOT NULL,
   `idUsuario` INT NOT NULL,
   PRIMARY KEY (`idPergunta`),
@@ -54,6 +56,8 @@ CREATE TABLE IF NOT EXISTS `askTechForum`.`RESPOSTA` (
   `descricao` VARCHAR(1000) NOT NULL,
   `idUsuario` INT NOT NULL,
   `idPergunta` INT NOT NULL,
+  `data` DATE NOT NULL,
+  `hora` HORA NOT NULL,
   PRIMARY KEY (`idResposta`),
   CONSTRAINT `fk_usuario_resposta`
     FOREIGN KEY (`idUsuario`)

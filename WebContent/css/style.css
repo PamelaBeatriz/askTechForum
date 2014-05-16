@@ -86,6 +86,25 @@ blockquote {
   background: #FFF;
 }
 
+.submit{
+  font: 100% arial; 
+  border: 0; 
+  width: 99px; 
+  height: 33px;
+  background: #3B3B3B; 
+  color: #FFF;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
+
+.input{
+	border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px; 
+	
+}
+
 ul { 
   margin: 2px 0 22px 17px;
 }
@@ -292,21 +311,30 @@ footer a:hover {
   text-decoration: none;
 }
 
-.form_settings { 
+
+
+.form_settings_cadastro span {
+	float: left;
+	width: 130px;
+	text-align: left;
+}
+
+
+.form_settings, .form_settings_cadastro { 
   margin: 15px 0 0 0;
 }
 
-.form_settings p { 
+.form_settings p, , .form_settings_cadastro p { 
   padding: 0 0 4px 0;
 }
 
 .form_settings span { 
   float: left; 
-  width: 200px; 
+  width: 60px; 
   text-align: left;
 }
-  
-.form_settings input, .form_settings textarea { 
+
+.form_settings input, .form_settings textarea, .form_settings_cadastro input, .form_settings_cadastro textarea { 
   padding: 5px; 
   width: 299px; 
   font: 100% arial; 
@@ -318,39 +346,33 @@ footer a:hover {
   -webkit-border: 7px 7px 7px 7px;  
 }
   
-.form_settings .submit { 
-  font: 100% arial; 
-  border: 0; 
-  width: 99px; 
-  margin: 0 0 0 212px; 
-  height: 33px;
-  padding: 2px 0 3px 0;
-  cursor: pointer; 
-  background: #3B3B3B; 
-  color: #FFF;
-  border-radius: 7px 7px 7px 7px;
-  -moz-border-radius: 7px 7px 7px 7px;
-  -webkit-border: 7px 7px 7px 7px;  
-}
-
-
-.submit{
-  font: 100% arial; 
-  border: 0; 
-  width: 99px; 
-  height: 33px;
-  background: #3B3B3B; 
-  color: #FFF;
-  border-radius: 7px 7px 7px 7px;
-  -moz-border-radius: 7px 7px 7px 7px;
-  -webkit-border: 7px 7px 7px 7px;  
-}
-
-.input{
+.form_settings .submit {
+	font: 100% arial;
+	border: 0;
+	width: 99px;
+	margin: 0 0 0 100px;
+	height: 30px;
+	padding: 0 0 0 0;
+	cursor: pointer;
+	background: #3B3B3B;
+	color: #FFF;
 	border-radius: 7px 7px 7px 7px;
-  -moz-border-radius: 7px 7px 7px 7px;
-  -webkit-border: 7px 7px 7px 7px; 
-	
+	-moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border: 7px 7px 7px 7px;
+}
+.form_settings_cadastro .submit {
+	font: 100% arial;
+	border: 0;
+	width: 99px;
+	margin: 0 0 0 0;
+	height: 30px;
+	padding: 0 0 0 0;
+	cursor: pointer;
+	background: #3B3B3B;
+	color: #FFF;
+	border-radius: 7px 7px 7px 7px;
+	-moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border: 7px 7px 7px 7px;
 }
 .form_settings textarea, .form_settings select { 
   font: 100% arial; 

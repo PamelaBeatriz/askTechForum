@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import asktechforum.util.ConnectionUtil;
+import asktechforum.util.UsuarioUtil;
 import asktechforum.dominio.Usuario;
 
 public class UsuarioDAO {
-
 	private Connection connection;
 	
 	public UsuarioDAO(){
@@ -96,11 +96,25 @@ public class UsuarioDAO {
 		return usuario;
 	}	
 	
+	public void atualizarIdUsuario(List<Usuario> usuarios, int index) {
+        	int idUsuario = usuarios.get(index-1).getIdUsuario();
+        	PreparedStatement preparedStatement;
+			try {
+				preparedStatement = connection.prepareStatement("update usuario set idUsuario=? where idUsuario=?;");
+	            preparedStatement.setInt(1, index);
+	            preparedStatement.setInt(2, idUsuario);
+	            preparedStatement.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+	
 	public List<Usuario> consultarTodosUsuarios() {
         List<Usuario> usuarios = new ArrayList<Usuario>();
+        UsuarioUtil usuarioUtil = new UsuarioUtil();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from usuario");
+            ResultSet rs = statement.executeQuery("select * from usuario;");
             while (rs.next()) {
             	Usuario usuario = new Usuario();
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
@@ -110,10 +124,10 @@ public class UsuarioDAO {
 				usuario.setLocalizacao(rs.getString("localizacao"));
             	usuarios.add(usuario);
             }
+            usuarios = usuarioUtil.ajustarIdUsuario(usuarios);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return usuarios;
     }
 }

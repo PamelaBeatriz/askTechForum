@@ -11,11 +11,11 @@ import java.util.List;
 import asktechforum.util.ConnectionUtil;
 import asktechforum.dominio.Usuario;
 
-public class CadastroUsuarioDAO {
+public class UsuarioDAO {
 
 	private Connection connection;
 	
-	public CadastroUsuarioDAO(){
+	public UsuarioDAO(){
 		connection = ConnectionUtil.getConnection();
 	}
 	

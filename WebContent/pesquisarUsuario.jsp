@@ -23,17 +23,17 @@
 						<input type="radio" name="pesquisaRadio" id="listarTodos" value="listartodosRadio" />
 					</td>
 					<td>
-						<label for="nome"> Nome: </label><input value="${usuario.nome}" type="text" name="nome" id="nome" />
+						<label for="nome"> Nome: </label><input class="input" value="${usuario.nome}" type="text" name="nome" id="nome" />
 						<br />
 						<br /> 
-						<label for="email"> E-mail: </label><input value="${usuario.email}" type="text" name="email" id="email" />
+						<label for="email"> E-mail: </label><input class="input" value="${usuario.email}" type="text" name="email" id="email" />
 						<br/>
 						<br />
 						<label for="listarTodos">Listar Todos</label>
 					</td>
 				</table>	
 				
-				<input value="Pesquisar" type="submit" /> 
+				<input value="Pesquisar" type="submit" class="submit"/> 
 				<br/><br/>
 
 				<c:if test="${not empty usuarios}">
@@ -51,7 +51,7 @@
 						<tbody>
 							<c:forEach items="${usuarios}" var="users">
 								<tr>
-									<td><input type="radio" name="usuario" id="usuario" /></td>
+									<td><input class="input" type="radio" name="usuario" id="usuario" /></td>
 									<td><c:out value="${users.idUsuario}" /></td>
 									<td><c:out value="${users.nome}" /></td>
 									<td><c:out value="${users.dataNascimento}" /></td>
@@ -61,7 +61,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-				<input value="Exibir" type="button" />
+				<input value="Exibir" type="button" class="submit"/>
 				<br/><br/><br/>
 				</c:if>
 			</div>

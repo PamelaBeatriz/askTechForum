@@ -333,6 +333,25 @@ footer a:hover {
   -webkit-border: 7px 7px 7px 7px;  
 }
 
+
+.submit{
+  font: 100% arial; 
+  border: 0; 
+  width: 99px; 
+  height: 33px;
+  background: #3B3B3B; 
+  color: #FFF;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
+
+.input{
+	border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px; 
+	
+}
 .form_settings textarea, .form_settings select { 
   font: 100% arial; 
   width: 299px;

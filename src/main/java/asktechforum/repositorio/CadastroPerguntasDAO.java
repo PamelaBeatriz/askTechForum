@@ -1,5 +1,7 @@
 package asktechforum.repositorio;
 
+import interfaces.CadastroPergunta;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -11,7 +13,7 @@ import asktechforum.dominio.Pergunta;
 import asktechforum.util.ConnectionUtil;
 import asktechforum.util.Util;
 
-public class CadastroPerguntasDAO {
+public class CadastroPerguntasDAO implements CadastroPergunta {
 
 	private Connection con;
 	private Util util = null;

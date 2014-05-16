@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import asktechforum.dominio.Usuario;
-import asktechforum.repositorio.CadastroUsuarioDAO;
+import asktechforum.repositorio.UsuarioDAO;
 
 /**
  * Implementação do Servlet de Cadastro de Usuario.
@@ -21,14 +21,14 @@ public class ServletCadastroUsuario extends HttpServlet {
     private static String SUCCESS = "/cadastroUsuarioSucesso.jsp";
     //private static String ERROR = "/cadastroUsuario.jsp";
 	
-    private CadastroUsuarioDAO dao;
+    private UsuarioDAO dao;
        
     /**
      * Construtor do Servlet de Cadastro de Usuario.
      */
     public ServletCadastroUsuario() {
         super();
-        dao = new CadastroUsuarioDAO();
+        dao = new UsuarioDAO();
     }
 
 	/**

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import asktechforum.dominio.Usuario;
-import asktechforum.repositorio.CadastroUsuarioDAO;
+import asktechforum.repositorio.UsuarioDAO;
 
 /**
  * Implementação do Servlet de Pesquisa de Usuario.
@@ -22,14 +22,14 @@ public class ServletPesquisaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String SUCCESS = "/pesquisarUsuario.jsp";
     
-    private CadastroUsuarioDAO dao;
+    private UsuarioDAO dao;
        
     /**
      * Construtor do Servlet de Pesquisa de Usuário.
      */
     public ServletPesquisaUsuario() {
         super();
-        dao = new CadastroUsuarioDAO();
+        dao = new UsuarioDAO();
     }
 
 	/**

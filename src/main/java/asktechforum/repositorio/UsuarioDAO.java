@@ -14,14 +14,16 @@ import asktechforum.dominio.Usuario;
 
 public class UsuarioDAO {
 	private Connection connection;
+    UsuarioUtil usuarioUtil;
 	
 	public UsuarioDAO(){
-		connection = ConnectionUtil.getConnection();
+		this.connection = ConnectionUtil.getConnection();
+		this.usuarioUtil = new UsuarioUtil();
 	}
 	
 	public void adicionarUsuario(Usuario usuario){
 		try {
-            PreparedStatement preparedStatement = connection
+            PreparedStatement preparedStatement = this.connection
                     .prepareStatement("insert into usuario(nome,dt_nasc,email,localizacao,senha) values ( ?, ?, ?, ?, ? )");
             
             preparedStatement.setString(1, usuario.getNome());
@@ -31,6 +33,8 @@ public class UsuarioDAO {
             preparedStatement.setString(5, usuario.getSenha());
             
             preparedStatement.executeUpdate();
+            
+	        this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,7 +43,8 @@ public class UsuarioDAO {
 	
 	public void deletarUsuario(String email) {
         try {
-            PreparedStatement preparedStatement = connection
+        	this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
+            PreparedStatement preparedStatement = this.connection
                     .prepareStatement("delete from usuario where email=?");
             
             preparedStatement.setString(1, email);
@@ -50,57 +55,67 @@ public class UsuarioDAO {
         }
     }
 		
-	public Usuario consultarUsuarioPorEmail(String email) {
-		Usuario usuario = new Usuario();
+	public List<Usuario> consultarUsuarioPorEmail(String email) {
+		List<Usuario> usuarios = new ArrayList<Usuario>();
 		try {
-			PreparedStatement preparedStatement = connection
+            this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
+            
+			PreparedStatement preparedStatement = this.connection
 					.prepareStatement("select * from usuario where email=?");
+			
 			preparedStatement.setString(1, email);
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
+				Usuario usuario = new Usuario();
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
 				usuario.setDataNascimento(rs.getString("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setLocalizacao(rs.getString("localizacao"));
+				usuarios.add(usuario);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return usuario;
+		return usuarios;
 	}	
 	
-	public Usuario consultarUsuarioPorNome(String nome) {
-		Usuario usuario = new Usuario();
+	public List<Usuario> consultarUsuarioPorNome(String nome) {
+		List<Usuario> usuarios = new ArrayList<Usuario>();
 		try {
-			PreparedStatement preparedStatement = connection
+            this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
+            
+			PreparedStatement preparedStatement = this.connection
 					.prepareStatement("select * from usuario where nome=?");
+			
 			preparedStatement.setString(1, nome);
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
+				Usuario usuario = new Usuario();
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
 				usuario.setDataNascimento(rs.getString("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setLocalizacao(rs.getString("localizacao"));
+				usuarios.add(usuario);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return usuario;
+		return usuarios;
 	}	
 	
 	public void atualizarIdUsuario(List<Usuario> usuarios, int index) {
         	int idUsuario = usuarios.get(index-1).getIdUsuario();
         	PreparedStatement preparedStatement;
 			try {
-				preparedStatement = connection.prepareStatement("update usuario set idUsuario=? where idUsuario=?;");
+				preparedStatement = this.connection.prepareStatement("update usuario set idUsuario=? where idUsuario=?;");
 	            preparedStatement.setInt(1, index);
 	            preparedStatement.setInt(2, idUsuario);
 	            preparedStatement.executeUpdate();
@@ -111,11 +126,11 @@ public class UsuarioDAO {
 	
 	public List<Usuario> consultarTodosUsuarios() {
         List<Usuario> usuarios = new ArrayList<Usuario>();
-        UsuarioUtil usuarioUtil = new UsuarioUtil();
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = this.connection.createStatement();
             ResultSet rs = statement.executeQuery("select * from usuario;");
-            while (rs.next()) {
+            
+            while(rs.next()) {
             	Usuario usuario = new Usuario();
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
@@ -124,7 +139,9 @@ public class UsuarioDAO {
 				usuario.setLocalizacao(rs.getString("localizacao"));
             	usuarios.add(usuario);
             }
-            usuarios = usuarioUtil.ajustarIdUsuario(usuarios);
+            
+            usuarios = this.usuarioUtil.ajustarIdUsuario(usuarios);
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }

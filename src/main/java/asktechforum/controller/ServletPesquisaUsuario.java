@@ -43,25 +43,27 @@ public class ServletPesquisaUsuario extends HttpServlet {
 	 * Implementacao do metodo doPost() Servlet de Pesquisa de Usuario.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario usuario = new Usuario();
 		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		String pesquisaRadio = request.getParameter("pesquisaRadio");
 		
-		switch (request.getParameter("pesquisaRadio")) {
-		case "nomeRadio":
-			usuario = dao.consultarUsuarioPorNome(request.getParameter("nome"));
-			listaUsuarios.add(usuario);
-			break;
-		case "emailRadio":
-			usuario = dao.consultarUsuarioPorEmail(request.getParameter("email"));
-			listaUsuarios.add(usuario);
-			break;
-		case "listartodosRadio":
-			listaUsuarios.addAll(dao.consultarTodosUsuarios());
-			break;
-		default:
-			break;
+		if(pesquisaRadio != null) {
+			switch (pesquisaRadio) {
+			case "nomeRadio":
+				listaUsuarios.addAll(dao.consultarUsuarioPorNome(request.getParameter("nome")));
+				break;
+			case "emailRadio":
+				listaUsuarios.addAll(dao.consultarUsuarioPorEmail(request.getParameter("email")));
+				break;
+			case "listartodosRadio":
+				listaUsuarios.addAll(dao.consultarTodosUsuarios());
+				break;
+			case "":
+				break;
+			default:
+				break;
+			}
 		}
-
+		
 		RequestDispatcher view = request.getRequestDispatcher(SUCCESS);
 		request.setAttribute("usuarios", listaUsuarios);
         view.forward(request, response);

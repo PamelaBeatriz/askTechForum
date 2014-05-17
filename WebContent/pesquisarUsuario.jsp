@@ -14,7 +14,7 @@
 			
 				<table border="0">
 					<td>
-						<input type="radio" name="pesquisaRadio" id="nome" value="nomeRadio" checked="checked" />
+						<input type="radio" name="pesquisaRadio" id="nome" value="nomeRadio" />
 						<br />
 						<br />
 						<input type="radio" name="pesquisaRadio" id="email" value="emailRadio" />

@@ -1,5 +1,4 @@
 package asktechforum.repositorio;
-
 import interfaces.CadastroPergunta;
 
 import java.sql.Connection;

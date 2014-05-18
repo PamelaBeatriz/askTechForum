@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-
 public class Util {
 	
 	/**
@@ -87,4 +86,5 @@ public class Util {
 		
 		return letra;
 	}
+
 }

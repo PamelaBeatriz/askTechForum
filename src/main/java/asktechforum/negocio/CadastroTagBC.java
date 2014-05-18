@@ -58,6 +58,7 @@ public class CadastroTagBC {
 		
 	}
 	
+
 	public ArrayList<Tag> consultarTodasTag() throws SQLException{
 		ArrayList<Tag> tag = new ArrayList<Tag>();
 		tag = cadastro.consultarTodasTag();

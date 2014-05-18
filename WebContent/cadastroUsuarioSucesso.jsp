@@ -1,4 +1,4 @@
-<%@ include file="cabecalho.jsp" %>
+<jsp:include page="cabecalho.jsp"></jsp:include>
 
 <br/><br/><br/>
 <h1>Usuário cadastrado com sucesso!</h1>

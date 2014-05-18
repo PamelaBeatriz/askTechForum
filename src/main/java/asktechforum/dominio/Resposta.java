@@ -16,6 +16,7 @@ public class Resposta {
 	private String strHora;
 	
 	private Util util;
+
 	
 	public Resposta() {
 		util = new Util();
@@ -86,4 +87,5 @@ public class Resposta {
 	public void setStrHora(String strHora) throws ParseException {
 		this.hora = util.converterStringToDate("dd/MM/yyyy", strHora);
 	}
+
 }

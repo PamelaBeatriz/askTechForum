@@ -17,4 +17,5 @@ public interface CadastroPergunta {
 	public ArrayList<Pergunta> consultarTodasPerguntas() throws SQLException;
 	public ArrayList<Pergunta> consultarPerguntaPorTag(int id)
 			throws SQLException ;
+	
 }

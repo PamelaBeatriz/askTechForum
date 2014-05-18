@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import asktechforum.util.ConnectionUtil;
+import asktechforum.util.UsuarioUtil;
 import asktechforum.dominio.Usuario;
 
 public class CadastroUsuarioDAO {
-
 	private Connection connection;
 	
 	public CadastroUsuarioDAO(){
@@ -25,7 +25,7 @@ public class CadastroUsuarioDAO {
                     .prepareStatement("insert into usuario(nome,dt_nasc,email,localizacao,senha) values ( ?, ?, ?, ?, ? )");
             
             preparedStatement.setString(1, usuario.getNome());
-            preparedStatement.setString(2, usuario.getDataNascimento());
+            preparedStatement.setDate(2, usuario.getDataNascimento());
             preparedStatement.setString(3, usuario.getEmail());
             preparedStatement.setString(4, usuario.getLocalizacao());
             preparedStatement.setString(5, usuario.getSenha());
@@ -61,7 +61,7 @@ public class CadastroUsuarioDAO {
 			if(rs.next()) {
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setDataNascimento(rs.getString("dt_nasc"));
+				usuario.setDataNascimento(rs.getDate("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setLocalizacao(rs.getString("localizacao"));
 			}
@@ -84,7 +84,7 @@ public class CadastroUsuarioDAO {
 			if(rs.next()) {
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setDataNascimento(rs.getString("dt_nasc"));
+				usuario.setDataNascimento(rs.getDate("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setLocalizacao(rs.getString("localizacao"));
 			}
@@ -96,24 +96,38 @@ public class CadastroUsuarioDAO {
 		return usuario;
 	}	
 	
+	public void atualizarIdUsuario(List<Usuario> usuarios, int index) {
+        	int idUsuario = usuarios.get(index-1).getIdUsuario();
+        	PreparedStatement preparedStatement;
+			try {
+				preparedStatement = connection.prepareStatement("update usuario set idUsuario=? where idUsuario=?;");
+	            preparedStatement.setInt(1, index);
+	            preparedStatement.setInt(2, idUsuario);
+	            preparedStatement.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+	
 	public List<Usuario> consultarTodosUsuarios() {
         List<Usuario> usuarios = new ArrayList<Usuario>();
+        UsuarioUtil usuarioUtil = new UsuarioUtil();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from usuario");
+            ResultSet rs = statement.executeQuery("select * from usuario;");
             while (rs.next()) {
             	Usuario usuario = new Usuario();
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setDataNascimento(rs.getString("dt_nasc"));
+				usuario.setDataNascimento(rs.getDate("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setLocalizacao(rs.getString("localizacao"));
             	usuarios.add(usuario);
             }
+            usuarios = usuarioUtil.ajustarIdUsuario(usuarios);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return usuarios;
     }
 }

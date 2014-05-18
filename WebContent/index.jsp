@@ -1,4 +1,4 @@
-<%@ include file="cabecalho.jsp" %>
+<jsp:include page="cabecalho.jsp"></jsp:include>
 
 
  <div id="site_content">

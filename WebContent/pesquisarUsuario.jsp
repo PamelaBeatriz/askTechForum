@@ -1,4 +1,6 @@
-<%@ include file="cabecalho.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<jsp:include page="cabecalho.jsp"></jsp:include>
 
 <br/>
 <br/>
@@ -31,9 +33,7 @@
 						<td></td>
 						<td>Id</td>
 						<td>Nome</td>
-						<td>Data de Nascimento</td>
 						<td>Email</td>
-						<td>Localização</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,9 +42,7 @@
 							<td><input type="radio" name="usuario" id="usuario" /></td>
 							<td><c:out value="${users.idUsuario}" /></td>
 							<td><c:out value="${users.nome}" /></td>
-							<td><c:out value="${users.dataNascimento}" /></td>
 							<td><c:out value="${users.email}" /></td>
-							<td><c:out value="${users.localizacao}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -52,6 +50,15 @@
 		</c:if>
 		<input value="Exibir" type="button" />
 		<br/><br/><br/>
+
+		<script type="text/javascript">
+			function validar(obj1) {
+				document.getElementById("formPesquisaUsuario").submit();
+				if (obj1.style.display == "none") {
+					obj1.style.display = "block";
+				}
+			}
+		</script>
 
 	</fieldset>
 </form>

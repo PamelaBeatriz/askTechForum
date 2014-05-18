@@ -33,6 +33,7 @@ public class UsuarioDAO {
             preparedStatement.setString(5, usuario.getSenha());
             
             preparedStatement.executeUpdate();
+            preparedStatement.close();
             
 	        this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
 
@@ -49,6 +50,7 @@ public class UsuarioDAO {
             
             preparedStatement.setString(1, email);
             preparedStatement.executeUpdate();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,6 +77,7 @@ public class UsuarioDAO {
 				usuario.setLocalizacao(rs.getString("localizacao"));
 				usuarios.add(usuario);
 			}
+            preparedStatement.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -103,6 +106,7 @@ public class UsuarioDAO {
 				usuario.setLocalizacao(rs.getString("localizacao"));
 				usuarios.add(usuario);
 			}
+            preparedStatement.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,14 +115,15 @@ public class UsuarioDAO {
 		return usuarios;
 	}	
 	
-	public void atualizarIdUsuario(List<Usuario> usuarios, int index) {
-        	int idUsuario = usuarios.get(index-1).getIdUsuario();
+	public void atualizarIdUsuario(List<Usuario> usuarios, int i, int index) {
+        	int idUsuario = usuarios.get(i).getIdUsuario();
         	PreparedStatement preparedStatement;
 			try {
 				preparedStatement = this.connection.prepareStatement("update usuario set idUsuario=? where idUsuario=?;");
 	            preparedStatement.setInt(1, index);
 	            preparedStatement.setInt(2, idUsuario);
 	            preparedStatement.executeUpdate();
+	            preparedStatement.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -141,6 +146,8 @@ public class UsuarioDAO {
             }
             
             usuarios = this.usuarioUtil.ajustarIdUsuario(usuarios);
+            
+            statement.close();
             
         } catch (SQLException e) {
             e.printStackTrace();

@@ -4,7 +4,7 @@
 <br />
 <br />
 
-<form id="formPesquisaUsuario" action="ServletPesquisaUsuario"
+<form id="formPesquisaUsuario1" action="ServletPesquisaUsuario"
 	method="post">
 
 	<div id="site_content">
@@ -32,10 +32,13 @@
 						<label for="listarTodos">Listar Todos</label>
 					</td>
 				</table>	
-				
+				<p style="color:red; font-size:12px;">* Selecione uma das opções acima para pesquisar.</p> 
 				<input value="Pesquisar" type="submit" class="submit"/> 
 				<br/><br/>
-
+</form>
+<form id="formPesquisaUsuario2" action="ServletPerfilUsuario"
+	method="post">
+	
 				<c:if test="${not empty usuarios}">
 					<table id="tabelaListaUsuarios" border="0">
 						<thead>
@@ -61,6 +64,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
+				<p style="color:red; font-size:12px;">* Selecione um dos usuários acima para exibir.</p> 
 				<input value="Exibir" type="button" class="submit"/>
 				<br/><br/><br/>
 				</c:if>

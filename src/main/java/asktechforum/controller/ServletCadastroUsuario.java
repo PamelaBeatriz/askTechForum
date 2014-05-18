@@ -18,8 +18,8 @@ import asktechforum.repositorio.UsuarioDAO;
 @WebServlet("/ServletCadastroUsuario")
 public class ServletCadastroUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String SUCCESS = "/cadastroUsuarioSucesso.jsp";
-    //private static String ERROR = "/cadastroUsuario.jsp";
+    private static String SUCCESS = "cadastroUsuarioSucesso.jsp";
+    //private static String ERROR = "cadastroUsuario.jsp";
 	
     private UsuarioDAO dao;
        

@@ -313,7 +313,7 @@ footer a:hover {
 
 
 
-.form_settings_cadastro span {
+.form_settings_cadastro, .form_settings_perfil span {
 	float: left;
 	width: 130px;
 	text-align: left;

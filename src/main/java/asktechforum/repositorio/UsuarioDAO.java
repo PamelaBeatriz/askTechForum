@@ -27,7 +27,7 @@ public class UsuarioDAO {
                     .prepareStatement("insert into usuario(nome,dt_nasc,email,localizacao,senha) values ( ?, ?, ?, ?, ? )");
             
             preparedStatement.setString(1, usuario.getNome());
-            preparedStatement.setString(2, usuario.getDataNascimento());
+            preparedStatement.setDate(2, usuario.getDataNascimento());
             preparedStatement.setString(3, usuario.getEmail());
             preparedStatement.setString(4, usuario.getLocalizacao());
             preparedStatement.setString(5, usuario.getSenha());
@@ -57,8 +57,8 @@ public class UsuarioDAO {
         }
     }
 		
-	public List<Usuario> consultarUsuarioPorEmail(String email) {
-		List<Usuario> usuarios = new ArrayList<Usuario>();
+	public Usuario consultarUsuarioPorEmail(String email) {
+		Usuario usuario = new Usuario();
 		try {
             this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
             
@@ -69,13 +69,12 @@ public class UsuarioDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
-				Usuario usuario = new Usuario();
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setDataNascimento(rs.getString("dt_nasc"));
+				usuario.setDataNascimento(rs.getDate("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setLocalizacao(rs.getString("localizacao"));
-				usuarios.add(usuario);
+				usuario.setAdmin(rs.getBoolean("admin"));
 			}
             preparedStatement.close();
 			
@@ -83,7 +82,7 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 		
-		return usuarios;
+		return usuario;
 	}	
 	
 	public List<Usuario> consultarUsuarioPorNome(String nome) {
@@ -101,9 +100,10 @@ public class UsuarioDAO {
 				Usuario usuario = new Usuario();
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setDataNascimento(rs.getString("dt_nasc"));
+				usuario.setDataNascimento(rs.getDate("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setLocalizacao(rs.getString("localizacao"));
+				usuario.setAdmin(rs.getBoolean("admin"));
 				usuarios.add(usuario);
 			}
             preparedStatement.close();
@@ -139,9 +139,10 @@ public class UsuarioDAO {
             	Usuario usuario = new Usuario();
 				usuario.setIdUsuario(rs.getInt("idUsuario"));
 				usuario.setNome(rs.getString("nome"));
-				usuario.setDataNascimento(rs.getString("dt_nasc"));
+				usuario.setDataNascimento(rs.getDate("dt_nasc"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setLocalizacao(rs.getString("localizacao"));
+				usuario.setAdmin(rs.getBoolean("admin"));
             	usuarios.add(usuario);
             }
             

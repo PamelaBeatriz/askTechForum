@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import asktechforum.dominio.Usuario;
 import asktechforum.repositorio.UsuarioDAO;
+import asktechforum.util.UsuarioUtil;
 
 /**
  * Implementação do Servlet de Cadastro de Usuario.
@@ -18,17 +19,17 @@ import asktechforum.repositorio.UsuarioDAO;
 @WebServlet("/ServletCadastroUsuario")
 public class ServletCadastroUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String SUCCESS = "cadastroUsuarioSucesso.jsp";
-    //private static String ERROR = "cadastroUsuario.jsp";
+    private static String SUCESSOCADASTRO = "cadastroUsuarioSucesso.jsp";
+    //private static String ERROCADASTRO = "cadastroUsuario.jsp";
 	
-    private UsuarioDAO dao;
+    private UsuarioDAO usuarioDao;
        
     /**
      * Construtor do Servlet de Cadastro de Usuario.
      */
     public ServletCadastroUsuario() {
         super();
-        dao = new UsuarioDAO();
+        this.usuarioDao = new UsuarioDAO();
     }
 
 	/**
@@ -44,15 +45,15 @@ public class ServletCadastroUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario usuario = new Usuario();
 		usuario.setNome(request.getParameter("nome"));
-		usuario.setDataNascimento(request.getParameter("dataNascimento"));
+		usuario.setDataNascimento(UsuarioUtil.converterStringData(request.getParameter("dataNascimento")));
 		usuario.setEmail(request.getParameter("email"));
 		usuario.setLocalizacao(request.getParameter("localizacao"));
 		usuario.setSenha(request.getParameter("senha"));
 		usuario.setConfSenha(request.getParameter("confsenha"));
 		
-		dao.adicionarUsuario(usuario);
+		usuarioDao.adicionarUsuario(usuario);
 		
-		RequestDispatcher view = request.getRequestDispatcher(SUCCESS);
+		RequestDispatcher view = request.getRequestDispatcher(SUCESSOCADASTRO);
 		request.setAttribute("usuario", usuario);
         view.forward(request, response);
 	}

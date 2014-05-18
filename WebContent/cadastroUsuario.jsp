@@ -36,10 +36,12 @@
 				    </p>
 					<p style="color:red; font-size:12px;">Os campos com * são obrigatórios.</p> 
 					<input class="submit" value="Cadastrar" type="submit" /> 
+					<br />
+					<br />
+					<br />
 				</div>	
 			</div>
 		</div>
 	</div>
 </form>
 <jsp:include page="rodape.jsp"></jsp:include>
-----

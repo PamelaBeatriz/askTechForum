@@ -4,7 +4,7 @@
 <br />
 <br />
 
-<form id="formPesquisaUsuario1" action="ServletPesquisaUsuario"
+<form id="formPesquisaUsuario" action="ServletPesquisaUsuario"
 	method="post">
 
 	<div id="site_content">
@@ -35,9 +35,6 @@
 				<p style="color:red; font-size:12px;">* Selecione uma das opções acima para pesquisar.</p> 
 				<input value="Pesquisar" type="submit" class="submit"/> 
 				<br/><br/>
-</form>
-<form id="formPesquisaUsuario2" action="ServletPerfilUsuario"
-	method="post">
 	
 				<c:if test="${not empty usuarios}">
 					<table id="tabelaListaUsuarios" border="0">
@@ -52,22 +49,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${usuarios}" var="users">
+							<c:forEach items="${usuarios}" var="usuarios">
 								<tr>
-									<td><input class="input" type="radio" name="usuario" id="usuario" /></td>
-									<td><c:out value="${users.idUsuario}" /></td>
-									<td><c:out value="${users.nome}" /></td>
-									<td><c:out value="${users.dataNascimento}" /></td>
-									<td><c:out value="${users.email}" /></td>
-									<td><c:out value="${users.localizacao}" /></td>
+									<td><label><c:out value="${usuarios.idUsuario}" /></label></td>
+									<td><c:out value="${usuarios.nome}" /></td>
+									<td><fmt:formatDate pattern="dd/MM/yyyy" value="${usuarios.dataNascimento}"/></td>
+									<td><c:out value="${usuarios.email}" /></td>
+									<td><c:out value="${usuarios.localizacao}" /></td>
+									<td><a href="ServletPerfilUsuario?emailUsuario=<c:out value="${usuarios.email}"/>">Exibir Perfil</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-				<p style="color:red; font-size:12px;">* Selecione um dos usuários acima para exibir.</p> 
-				<input value="Exibir" type="button" class="submit"/>
-				<br/><br/><br/>
 				</c:if>
+				
 			</div>
 		</div>
 	</div>

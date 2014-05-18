@@ -1,5 +1,8 @@
 package asktechforum.util;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Random;
 
@@ -52,4 +55,26 @@ public class UsuarioUtil {
         }
 		return aux;
 	}
+	
+	/** 
+     * Converte uma String para um objeto Date. Caso a String seja vazia ou nula,  
+     * retorna null - para facilitar em casos onde formulários podem ter campos 
+     * de datas vazios. 
+     * @param dataString String no formato dd/MM/yyyy a ser formatada 
+     * @return Date Objeto Date ou null caso receba uma String vazia ou nula 
+     * @throws Exception Caso a String esteja no formato errado 
+     */  
+    public static Date converterStringData(String dataString) {   
+        if (dataString == null || dataString.equals(""))  
+            return null;  
+          
+        Date data = null;  
+        try {   
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+            data = new Date(formatter.parse(dataString).getTime());
+        } catch (ParseException e) {              
+            e.printStackTrace();  
+        }  
+        return data;  
+    }
 }

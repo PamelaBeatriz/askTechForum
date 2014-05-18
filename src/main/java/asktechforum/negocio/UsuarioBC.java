@@ -1,6 +1,6 @@
 package asktechforum.negocio;
 
-public class CadastroUsuarioBC {
+public class UsuarioBC {
 	//campos em branco
 	//campos nulos
 	//campo nome com caracter e/ou numero

@@ -20,7 +20,7 @@ import asktechforum.repositorio.UsuarioDAO;
 @WebServlet("/ServletPesquisaUsuario")
 public class ServletPesquisaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String SUCCESS = "pesquisarUsuario.jsp";
+    private static String PESQUISA = "pesquisarUsuario.jsp";
     
     private UsuarioDAO dao;
        
@@ -29,7 +29,7 @@ public class ServletPesquisaUsuario extends HttpServlet {
      */
     public ServletPesquisaUsuario() {
         super();
-        dao = new UsuarioDAO();
+        this.dao = new UsuarioDAO();
     }
 
 	/**
@@ -52,7 +52,7 @@ public class ServletPesquisaUsuario extends HttpServlet {
 				listaUsuarios.addAll(dao.consultarUsuarioPorNome(request.getParameter("nome")));
 				break;
 			case "emailRadio":
-				listaUsuarios.addAll(dao.consultarUsuarioPorEmail(request.getParameter("email")));
+				listaUsuarios.add(dao.consultarUsuarioPorEmail(request.getParameter("email")));
 				break;
 			case "listartodosRadio":
 				listaUsuarios.addAll(dao.consultarTodosUsuarios());
@@ -64,7 +64,7 @@ public class ServletPesquisaUsuario extends HttpServlet {
 			}
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher(SUCCESS);
+		RequestDispatcher view = request.getRequestDispatcher(PESQUISA);
 		request.setAttribute("usuarios", listaUsuarios);
         view.forward(request, response);
 	}

@@ -40,12 +40,12 @@
 					<table id="tabelaListaUsuarios" border="0">
 						<thead>
 							<tr class="tabelaPesquisa">
-								<td></td>
 								<td>Id</td>
 								<td>Nome</td>
 								<td>Data de Nascimento</td>
 								<td>Email</td>
 								<td>Localização</td>
+								<td>Exibir Perfil</td>
 							</tr>
 						</thead>
 						<tbody>

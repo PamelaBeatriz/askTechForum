@@ -45,8 +45,8 @@ public class ServletCadastroUsuario extends HttpServlet {
 		Usuario usuario = new Usuario();
 		usuario.setNome(request.getParameter("nome"));
 		usuario.setDataNascimento(UsuarioUtil.converterStringData(request.getParameter("dataNascimento")));
+
 		usuario.setEmail(request.getParameter("email"));
-		usuario.setLocalizacao(request.getParameter("localizacao"));
 		usuario.setSenha(request.getParameter("senha"));
 		usuario.setConfSenha(request.getParameter("confsenha"));
 		

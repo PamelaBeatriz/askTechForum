@@ -73,9 +73,14 @@ public class Resposta {
 		return strData;
 	}
 
-	public void setStrData(String strData) throws ParseException {
+	public void setStrData(String strData) {
 		
-	  this.data = util.converterStringToDate("dd/MM/yyyy", strData);
+	  try {
+		this.data = util.converterStringToDate("dd/MM/yyyy", strData);
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	  
 	}
 
@@ -84,8 +89,13 @@ public class Resposta {
 		return strHora;
 	}
 
-	public void setStrHora(String strHora) throws ParseException {
-		this.hora = util.converterStringToDate("dd/MM/yyyy", strHora);
+	public void setStrHora(String strHora) {
+		try {
+			this.hora = util.converterStringToDate("dd/MM/yyyy", strHora);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -52,9 +52,14 @@ public class Pergunta {
 		return strData;
 	}
 
-	public void setStrData(String strData) throws ParseException {
+	public void setStrData(String strData){
 		
-		this.data = util.converterStringToDate("dd/MM/yyyy", strData);
+		try {
+			this.data = util.converterStringToDate("dd/MM/yyyy", strData);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public String getStrHora() {
@@ -62,8 +67,13 @@ public class Pergunta {
 		return strHora;
 	}
 
-	public void setStrHora(String strHora) throws ParseException {
-		this.hora = util.converterStringToDate("hh:mm", strHora);
+	public void setStrHora(String strHora)  {
+		try {
+			this.hora = util.converterStringToDate("hh:mm", strHora);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public java.sql.Date getData() {

@@ -1,5 +1,7 @@
 package asktechforum.repositorio;
 
+import interfaces.CadastroTag;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import asktechforum.dominio.Tag;
 import asktechforum.util.ConnectionUtil;
 
-public class CadastroTagDAO {
+public class CadastroTagDAO implements CadastroTag{
 
 	private Connection con = null;
 

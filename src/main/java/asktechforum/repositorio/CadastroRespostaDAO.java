@@ -1,15 +1,18 @@
 package asktechforum.repositorio;
 
+import interfaces.CadastroResposta;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import asktechforum.dominio.Resposta;
 import asktechforum.util.ConnectionUtil;
 import asktechforum.util.Util;
 
-public class CadastroRespostaDAO {
+public class CadastroRespostaDAO implements CadastroResposta {
 
 	private Connection con = null;
 	private Util util = null;

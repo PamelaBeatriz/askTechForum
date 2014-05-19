@@ -22,21 +22,20 @@ public class ServletCadastroUsuario extends HttpServlet {
     private static String SUCESSOCADASTRO = "cadastroUsuarioSucesso.jsp";
     //private static String ERROCADASTRO = "cadastroUsuario.jsp";
 	
-    private UsuarioDAO usuarioDao;
+    private UsuarioDAO dao;
        
     /**
      * Construtor do Servlet de Cadastro de Usuario.
      */
     public ServletCadastroUsuario() {
         super();
-        this.usuarioDao = new UsuarioDAO();
+        this.dao = new UsuarioDAO();
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Implementacao do metodo doGet() Servlet de Cadastro de Usuario.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -51,7 +50,7 @@ public class ServletCadastroUsuario extends HttpServlet {
 		usuario.setSenha(request.getParameter("senha"));
 		usuario.setConfSenha(request.getParameter("confsenha"));
 		
-		usuarioDao.adicionarUsuario(usuario);
+		dao.adicionarUsuario(usuario);
 		
 		RequestDispatcher view = request.getRequestDispatcher(SUCESSOCADASTRO);
 		request.setAttribute("usuario", usuario);

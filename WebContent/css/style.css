@@ -587,3 +587,7 @@ ul ul span.sf-arrow {
   right: 12px;
   top: 15px;
 }
+
+input#pesquisaUsuarioEmail, input#alteracaoUsuarioId, input#exclusaoUsuarioEmail {
+	visibility: hidden;	
+}

@@ -21,6 +21,28 @@ public class UsuarioDAO {
 		this.usuarioUtil = new UsuarioUtil();
 	}
 	
+	public void alterarUsuario(Usuario usuario){
+		try {
+            PreparedStatement preparedStatement = this.connection
+                    .prepareStatement("update usuario set nome=?,dt_nasc=?,admin=?,email=?,localizacao=? where idUsuario=?");
+
+            preparedStatement.setString(1, usuario.getNome());
+            preparedStatement.setDate(2, usuario.getDataNascimento());
+            preparedStatement.setBoolean(3, usuario.isAdmin());
+            preparedStatement.setString(4, usuario.getEmail());
+            preparedStatement.setString(5, usuario.getLocalizacao());
+            preparedStatement.setInt(6, usuario.getIdUsuario());
+            
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            
+	        this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+	
 	public void adicionarUsuario(Usuario usuario){
 		try {
             PreparedStatement preparedStatement = this.connection
@@ -44,7 +66,6 @@ public class UsuarioDAO {
 	
 	public void deletarUsuario(String email) {
         try {
-        	this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
             PreparedStatement preparedStatement = this.connection
                     .prepareStatement("delete from usuario where email=?");
             
@@ -52,10 +73,40 @@ public class UsuarioDAO {
             preparedStatement.executeUpdate();
             preparedStatement.close();
 
+        	this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+	
+	public Usuario consultarUsuarioPorId(int idUsuario) {
+		Usuario usuario = new Usuario();
+		try {
+            this.usuarioUtil.ajustarIdUsuario(this.consultarTodosUsuarios());
+            
+			PreparedStatement preparedStatement = this.connection
+					.prepareStatement("select * from usuario where idUsuario=?");
+			
+			preparedStatement.setInt(1, idUsuario);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				usuario.setIdUsuario(rs.getInt("idUsuario"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setDataNascimento(rs.getDate("dt_nasc"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setLocalizacao(rs.getString("localizacao"));
+				usuario.setAdmin(rs.getBoolean("admin"));
+			}
+            preparedStatement.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return usuario;
+	}
 		
 	public Usuario consultarUsuarioPorEmail(String email) {
 		Usuario usuario = new Usuario();

@@ -22,7 +22,7 @@
 					<p>
 						<span>E-mail: </span>
 						<label>${usuario.email}</label>
-						<input type="radio" name="pesquisaUsuarioEmail" id="pesquisaUsuarioEmail" value="${usuario.email}" checked="checked" />
+						<input type="hidden" name="pesquisaUsuarioEmail" id="pesquisaUsuarioEmail" value="${usuario.email}" checked="checked" />
 					</p>
 					<p>
 						<span>Localização: </span>
@@ -39,7 +39,7 @@
 						<input value="Editar Perfil" type="button" class="submit" onclick="alterarUsuario()" />
 						<input value="Excluir Cadastro" type="button" class="submit" onclick="excluirUsuario()" />
 						<input value="Voltar" type="button" class="submit" onclick="voltar()" />
-						<input type="radio" name="exclusaoUsuarioEmail" id="exclusaoUsuarioEmail" value="${usuario.email}" checked="checked" />
+						<input type="hidden" name="exclusaoUsuarioEmail" id="exclusaoUsuarioEmail" value="${usuario.email}" checked="checked" />
 					</p> 
 				</form>
 			</div>

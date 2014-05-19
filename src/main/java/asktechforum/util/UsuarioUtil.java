@@ -1,5 +1,4 @@
 package asktechforum.util;
-
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +7,10 @@ import java.util.Random;
 
 import asktechforum.dominio.Usuario;
 import asktechforum.repositorio.UsuarioDAO;
+import java.util.List;
+
+import asktechforum.dominio.Usuario;
+
 
 public class UsuarioUtil {
 	
@@ -77,4 +80,5 @@ public class UsuarioUtil {
         }  
         return data;  
     }
+    	
 }

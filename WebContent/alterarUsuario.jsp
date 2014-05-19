@@ -12,7 +12,7 @@
 			<div class="content_item">
 				<div class="form_settings_cadastro">
 					<p>
-						<input type="radio" name="alteracaoUsuarioId" id="alteracaoUsuarioId" value="${usuario.idUsuario}" checked="checked" />
+						<input type="hidden" name="alteracaoUsuarioId" id="alteracaoUsuarioId" value="${usuario.idUsuario}" checked="checked" />
 						<span>Nome* </span>
 						<input class="contact" value="${usuario.nome}" type="text" name="nome" id="nome" />
 					</p>

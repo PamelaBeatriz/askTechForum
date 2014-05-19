@@ -4,7 +4,8 @@
 <br />
 <br />
 
-<form action="ServletCadastroUsuario" method="post">
+<form id="formCadastroUsuario" action="ServletCadastroUsuario" method="post">
+
 	<div id="site_content">
 		<div class="content">
 			<h1>Cadastre-se</h1>

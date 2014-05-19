@@ -4,13 +4,11 @@
 <br />
 <br />
 
-<form id="formPesquisaUsuario" action="ServletPesquisaUsuario"
-	method="post">
-
-	<div id="site_content">
-		<div class="content">
-			<h1>Pesquisar Usuários</h1>
-			<div class="content_item">
+<div id="site_content">
+	<div class="content">
+		<h1>Pesquisar Usuários</h1>
+		<div class="content_item">
+			<form id="formPesquisaUsuario" action="ServletPesquisaUsuario" method="post">
 			
 				<table border="0">
 					<td>
@@ -20,7 +18,7 @@
 						<input type="radio" name="pesquisaRadio" id="email" value="emailRadio" />
 						<br />
 						<br />
-						<input type="radio" name="pesquisaRadio" id="listarTodos" value="listartodosRadio" />
+						<input type="radio" name="pesquisaRadio" id="listarTodos" value="listartodosRadio" checked="checked" />
 					</td>
 					<td>
 						<label for="nome"> Nome: </label><input class="input" value="${usuario.nome}" type="text" name="nome" id="nome" />
@@ -35,40 +33,60 @@
 				<p style="color:red; font-size:12px;">* Selecione uma das opções acima para pesquisar.</p> 
 				<input value="Pesquisar" type="submit" class="submit"/> 
 				<br/><br/>
+			</form>				
+			
+			<form id="formPerfilUsuario" action="ServletPerfilUsuario"
+				method="post">
 	
 				<c:if test="${not empty usuarios}">
 					<table id="tabelaListaUsuarios" border="0">
 						<thead>
 							<tr class="tabelaPesquisa">
+								<td></td>
 								<td>Id</td>
 								<td>Nome</td>
 								<td>Data de Nascimento</td>
 								<td>Email</td>
 								<td>Localização</td>
-								<td>Exibir Perfil</td>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${usuarios}" var="usuarios">
 								<tr>
-									<td><label><c:out value="${usuarios.idUsuario}" /></label></td>
+									<td><input type="radio" name="usuarioRadio" id="usuario" value="${usuarios.email}" /></td>
+									<td><c:out value="${usuarios.idUsuario}" /></td>
 									<td><c:out value="${usuarios.nome}" /></td>
 									<td><fmt:formatDate pattern="dd/MM/yyyy" value="${usuarios.dataNascimento}"/></td>
 									<td><c:out value="${usuarios.email}" /></td>
 									<td><c:out value="${usuarios.localizacao}" /></td>
-									<td><a href="ServletPerfilUsuario?emailUsuario=<c:out value="${usuarios.email}"/>">Exibir Perfil</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+					<p style="color:red; font-size:12px;">* Selecione um dos usuários acima para exibir.</p> 
+					<input value="Exibir Perfil" type="button" class="submit" onclick="validarExibirUsuario()"/> 
 				</c:if>
-				
-			</div>
+			</form>		
 		</div>
 	</div>
-</form>
+</div>
 <br />
 <br />
 <br />
+
+<script>
+	function validarExibirUsuario() {
+		var radio;
+		var formulario = document.getElementById("formPerfilUsuario");
+		var radioButton = document.getElementsByName("usuarioRadio");
+		
+		for(var i = 0; i < radioButton.length; i++) {
+			radio = radioButton.item(i);
+			if(radio.checked == true) {
+				formulario.submit();
+			}
+		}
+	}
+</script>
 
 <jsp:include page="rodape.jsp"></jsp:include>

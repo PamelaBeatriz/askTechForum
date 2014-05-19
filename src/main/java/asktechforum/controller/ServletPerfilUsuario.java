@@ -33,24 +33,23 @@ public class ServletPerfilUsuario extends HttpServlet {
     /**
 	 * Implementacao do metodo doGet() Servlet de Perfil de Usuario.
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario usuario = new Usuario();
-		String emailUsuario = request.getParameter("emailUsuario");
-		usuario = this.dao.consultarUsuarioPorEmail(emailUsuario);
-		
-		
-		
-		
-		
-		RequestDispatcher view = request.getRequestDispatcher(PERFIL);
-		request.setAttribute("usuario", usuario);
-        view.forward(request, response);	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 	}
 
 	/**
 	 * Implementacao do metodo doPost() Servlet de Perfil de Usuario.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Usuario usuario = new Usuario();
+		String usuarioRadio = request.getParameter("usuarioRadio");
+		
+		if(usuarioRadio != null) {
+			usuario = this.dao.consultarUsuarioPorEmail(usuarioRadio);
+			
+			RequestDispatcher view = request.getRequestDispatcher(PERFIL);
+			request.setAttribute("usuario", usuario);
+	        view.forward(request, response);
+		}
 	}
 
 }

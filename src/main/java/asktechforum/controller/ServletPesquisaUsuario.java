@@ -32,11 +32,10 @@ public class ServletPesquisaUsuario extends HttpServlet {
         this.dao = new UsuarioDAO();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+	 * Implementacao do metodo doGet() Servlet de Pesquisa de Usuario.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -45,14 +44,21 @@ public class ServletPesquisaUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		String pesquisaRadio = request.getParameter("pesquisaRadio");
+		String nome, email;
 		
-		if(pesquisaRadio != null) {
+		if(pesquisaRadio != null && pesquisaRadio.trim() != "") {
 			switch (pesquisaRadio) {
 			case "nomeRadio":
-				listaUsuarios.addAll(dao.consultarUsuarioPorNome(request.getParameter("nome")));
+				nome = request.getParameter("nome");
+				if(nome.trim() != "" && nome != null) {
+					listaUsuarios.addAll(dao.consultarUsuarioPorNome(nome));
+				}
 				break;
 			case "emailRadio":
-				listaUsuarios.add(dao.consultarUsuarioPorEmail(request.getParameter("email")));
+				email = request.getParameter("email");
+				if(email.trim() != "" && email != null) {
+					listaUsuarios.add(dao.consultarUsuarioPorEmail(email));
+				}
 				break;
 			case "listartodosRadio":
 				listaUsuarios.addAll(dao.consultarTodosUsuarios());
@@ -62,11 +68,11 @@ public class ServletPesquisaUsuario extends HttpServlet {
 			default:
 				break;
 			}
+			
+			RequestDispatcher view = request.getRequestDispatcher(PESQUISA);
+			request.setAttribute("usuarios", listaUsuarios);
+	        view.forward(request, response);
 		}
-		
-		RequestDispatcher view = request.getRequestDispatcher(PESQUISA);
-		request.setAttribute("usuarios", listaUsuarios);
-        view.forward(request, response);
 	}
 
 }
